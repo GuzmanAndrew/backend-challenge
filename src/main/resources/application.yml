@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: backend-challenge
+  datasource:
+    url: jdbc:postgresql://localhost:5433/challenge_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=30m
+  task:
+    execution:
+      pool:
+        core-size: 2
+        max-size: 4
+        queue-capacity: 100
+      thread-name-prefix: CallHistory-
+server:
+  port: 8080
+  error:
+    include-message: always
