@@ -46,7 +46,7 @@ public class CallHistoryServiceImpl implements CallHistoryService {
   @Override
   public Page<CallHistory> getCallHistory(int page, int size) {
     try {
-      if (page < 0 || size <= 0) {
+      if (page < 0 || size <= 0 || size > 20) {
         throw new ValidationException(ErrorMessage.INVALID_PAGE_PARAMS);
       }
 
